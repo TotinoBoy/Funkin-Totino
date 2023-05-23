@@ -35,10 +35,10 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib path flixel
 
-      #- run: lime test linux -debug
+      - run: lime test linux -debug
 
 
-      #- uses: actions/upload-artifact@v2
-      #  with:
-      #    name: linux-project
-      #    path: '${env.GITHUB_WORKSPACE}/export/debug'
+      - uses: actions/upload-artifact@v2
+        with:
+          name: linux-project
+          path: '${{env.GITHUB_WORKSPACE}}/export/debug'
