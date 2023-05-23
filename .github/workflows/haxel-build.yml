@@ -27,5 +27,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: linux-project
-          path: ${{GITHUB_WORKSPACE}}/export
+          path: '${{env.GITHUB_WORKSPACE}}/export/debug'
 
