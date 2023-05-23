@@ -4,33 +4,26 @@ on:
   # add other event triggers
 jobs:
   build:
-    name: Haxel Linux Build
     runs-on: ubuntu-latest
     steps:
-      -name: Checkout Repo
-       uses: actions/checkout@v3
-      
-      -name: Setup Haxe and libraries
-       uses: krdlab/setup-haxe@v1
-       with:
-         haxe-version: 4.1.5
-      - run: |
+      - uses: actions/checkout@v3
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.1.5
+      - run: | 
           haxe -version
           haxelib install lime
           haxelib install openfl
           haxelib install flixel
           haxelib install flixel-addons
           haxelib install flixel-ui
+          haxelib install flixel-tools
+          haxelib install hscript
+          haxelib install newgrounds
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib run lime setup flixel
+          haxelib run lime setup
+          haxelib run flixel-tools setup
           haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
 
-      #Use cacheing for any of these
-
-      #Compile
-      -name:
-      -run: haxelib run lime setup
-
-      #Save Build artifacts.
-
-      #Cache any previous build cache files (not sure will need to ask)
