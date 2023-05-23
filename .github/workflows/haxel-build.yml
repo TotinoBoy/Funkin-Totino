@@ -34,10 +34,10 @@ jobs:
 
           
       - run: | 
-          haxelib run lime setup
-          haxelib run lime setup flixel
-          haxelib run lime setup openfl
-          lime setup linux
+          haxelib run lime setup -f
+          haxelib run lime setup flixel -f
+          haxelib run lime setup openfl -f
+          lime setup linux -f
 
       - run: lime test linux -debug
         shell: lime
