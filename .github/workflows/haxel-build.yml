@@ -13,17 +13,21 @@ jobs:
       - run: | 
           haxe -version
           haxelib install lime
+          haxelib run lime setup
           haxelib install openfl
           haxelib install flixel
           haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
           haxelib install flixel-ui
+          haxelib run lime setup flixel
           haxelib install hscript
           haxelib install newgrounds
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
-          haxelib run lime setup flixel
-          haxelib run lime setup
+          haxelib path flixel
+
       - run: lime test linux -debug
+
+      
       - uses: actions/upload-artifact@v2
         with:
           name: linux-project
