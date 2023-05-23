@@ -36,6 +36,7 @@ jobs:
           haxelib path flixel
 
       - run: lime test linux -debug
+        shell: pwsh
 
 
       - uses: actions/upload-artifact@v2
