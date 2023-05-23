@@ -10,6 +10,19 @@ jobs:
       - uses: krdlab/setup-haxe@v1
         with:
           haxe-version: 4.1.5
+
+      - name: Check for cache of haxe and haxelibs
+        id: cache-libraries
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-haxe-libraries
+        with:
+          path: '/opt/hostedtoolcache/haxe/4.1.5/x64/lib/'
+          key: ${{ runner.os }}-build-${{ env.cache-name }} #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
+          restore-keys: |
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
       - run: | 
           haxe -version
           haxelib install lime
@@ -27,7 +40,7 @@ jobs:
 
       - run: lime test linux -debug
 
-      
+
       - uses: actions/upload-artifact@v2
         with:
           name: linux-project
