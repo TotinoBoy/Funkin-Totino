@@ -24,11 +24,11 @@ jobs:
         run: | 
           haxe -version
           haxelib setup './${{env.GITHUB_WORKSPACE}}/haxelib'
-          haxelib install lime -f
-          haxelib install openfl -f 
-          haxelib install format -f
-          haxelib run lime setup -f
-          haxelib run openfl setup -f
+          haxelib install lime
+          haxelib install openfl
+          haxelib install format
+          haxelib run lime setup
+          haxelib run openfl setup
 
       - name: Install Haxe Libraries
         run: | 
