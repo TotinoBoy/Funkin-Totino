@@ -23,13 +23,15 @@ jobs:
       - name: Install Lime
         run: | 
           haxe -version
+          haxelib setup ${{env.GITHUB_WORKSPACE}}/haxelib
           haxelib install lime
-          haxelib setup lime
+          haxelib install openfl
+          haxelib install format
           haxelib run lime setup
+          haxelib run lime openfl
 
       - name: Install Haxe Libraries
         run: | 
-          haxelib install openfl
           haxelib install flixel
           haxelib git flixel-addons https://github.com/HaxeFlixel/flixel-addons
           haxelib install flixel-ui
@@ -38,7 +40,7 @@ jobs:
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
 
-      - run: haxelib lime test linux -debug
+      - run: lime test linux -debug
         shell: sh
 
       - uses: actions/upload-artifact@v2
