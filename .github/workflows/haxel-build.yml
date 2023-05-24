@@ -11,14 +11,14 @@ jobs:
         with:
           haxe-version: 4.2.5
 
-      - name: Check for cache of haxe and haxelibs
-        id: cache-libraries
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-haxe-libraries
-        with:
-          path: './${env.GITHUB_WORKSPACE}}/haxelib'
-          key: ${{ runner.os }}-build-funkin #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
+#     - name: Check for cache of haxe and haxelibs
+#       id: cache-libraries
+#       uses: actions/cache@v3
+#       env:
+#          cache-name: cache-haxe-libraries
+#        with:
+#          path: './${env.GITHUB_WORKSPACE}}/haxelib'
+#          key: ${{ runner.os }}-build-funkin #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
 
       - name: Install Lime
         run: | 
@@ -42,7 +42,8 @@ jobs:
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
-          
+          haxelib update flixel-addons
+
 
       - run: haxelib run lime test linux -debug
 
