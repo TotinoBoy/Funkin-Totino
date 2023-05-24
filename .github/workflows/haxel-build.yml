@@ -34,10 +34,7 @@ jobs:
 
           
       - run: | 
-          haxelib run lime setup -f
-          haxelib run lime setup flixel -f
-          haxelib run lime setup openfl -f
-          lime setup linux -f
+          haxelib run lime
 
       - run: lime test linux -debug
         shell: lime
