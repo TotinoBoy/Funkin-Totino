@@ -34,10 +34,11 @@ jobs:
 
           
       - run: | 
+          haxelib setup lime
           haxelib run lime
 
-      - run: lime test linux -debug
-        shell: lime
+      - run: haxelib lime test linux -debug
+        shell: sh
 
 
       - uses: actions/upload-artifact@v2
