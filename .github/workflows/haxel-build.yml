@@ -11,19 +11,19 @@ jobs:
         with:
           haxe-version: 4.1.5
 
-      - name: Check for cache of haxe and haxelibs
-        id: cache-libraries
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-haxe-libraries
-        with:
-          path: '/opt/hostedtoolcache/haxe/4.1.5/x64/lib/'
-          key: ${{ runner.os }}-build #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
+#      - name: Check for cache of haxe and haxelibs
+#        id: cache-libraries
+#        uses: actions/cache@v3
+#        env:
+#          cache-name: cache-haxe-libraries
+#        with:
+#          path: '/opt/hostedtoolcache/haxe/4.1.5/x64/lib/'
+#          key: ${{ runner.os }}-build #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
 
       - name: Install Lime
         run: | 
           haxe -version
-          haxelib setup ${{env.GITHUB_WORKSPACE}}/haxelib
+          haxelib setup './${{env.GITHUB_WORKSPACE}}/haxelib'
           haxelib install lime
           haxelib install openfl
           haxelib install format
@@ -41,9 +41,8 @@ jobs:
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
 
       - run: lime test linux -debug
-        shell: sh
 
       - uses: actions/upload-artifact@v2
         with:
           name: linux-project
-          path: '${{env.GITHUB_WORKSPACE}}/export/debug'
+          path: './${{env.GITHUB_WORKSPACE}}/export/debug'
