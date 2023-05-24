@@ -29,6 +29,8 @@ jobs:
           haxelib install format
           haxelib run lime setup
           haxelib run openfl setup
+          haxelib run lime  
+          haxelib run openfl
 
       - name: Install Haxe Libraries
         run: | 
@@ -39,6 +41,7 @@ jobs:
           haxelib install newgrounds
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          haxelib install hxcpp-debug-server
 
       - run: haxelib run lime test linux -debug
 
