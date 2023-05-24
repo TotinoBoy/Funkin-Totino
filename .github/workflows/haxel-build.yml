@@ -9,16 +9,16 @@ jobs:
       - uses: actions/checkout@v3
       - uses: krdlab/setup-haxe@v1
         with:
-          haxe-version: 4.1.5
+          haxe-version: 4.2.5
 
-#      - name: Check for cache of haxe and haxelibs
-#        id: cache-libraries
-#        uses: actions/cache@v3
-#        env:
-#          cache-name: cache-haxe-libraries
-#        with:
-#          path: '/opt/hostedtoolcache/haxe/4.1.5/x64/lib/'
-#          key: ${{ runner.os }}-build #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
+      - name: Check for cache of haxe and haxelibs
+        id: cache-libraries
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-haxe-libraries
+        with:
+          path: './${env.GITHUB_WORKSPACE}}/haxelib'
+          key: ${{ runner.os }}-build-funkin #need some way to differ between changed libraries (if you want to update a library) otherwise this should just work.
 
       - name: Install Lime
         run: | 
