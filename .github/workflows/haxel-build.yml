@@ -35,7 +35,7 @@ jobs:
       - name: Install Haxe Libraries
         run: | 
           haxelib update hscript 
-          haxelib install flixel
+          haxelib install flixel 4.11.0 
           haxelib install flixel-addons 2.11.0
           haxelib set flixel-addons 2.11.0
           haxelib install flixel-ui
