@@ -40,8 +40,7 @@ jobs:
           haxelib set flixel-addons 2.11.0
           haxelib install flixel-ui
           haxelib install hscript
-          haxelib install newgrounds 1.1.5
-          haxelib set newgrounds 1.1.5
+          haxelib git newgrounds https://github.com/ZoologistArctic/newgrounds-fnf-test
           haxelib git polymod https://github.com/larsiusprime/polymod.git
           haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib install hxcpp-debug-server
